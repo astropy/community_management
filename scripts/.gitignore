@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__
+mailing_list/data/*
+archives.txt
+pyenv/*
+*.xlsx#

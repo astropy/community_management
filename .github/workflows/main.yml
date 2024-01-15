@@ -1,0 +1,25 @@
+# This GitHub Action is meant to run once per month to gather and update statistics around engagement
+# and participation in the astropy community across various platforms. 
+on:
+    workflow_dispatch:
+    schedule:
+        - cron:  '0 0 1 * *' # Run on the first day of every month
+permissions:
+    contents: write
+  
+jobs:
+    JobName: # Name this key whatever you want your job to be called
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+            cache: 'pip' # caching pip dependencies
+        - run: pip install -r requirements.txt
+        - run: bash bin/monthly_run.sh
+        - run: |
+            git config --global user.name "Automatic Action"
+            git config --global user.email "AutomaticBot@users.noreply.github.com"
+            git commit -am "Automated commit"
+            git push origin main
