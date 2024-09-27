@@ -11,8 +11,8 @@ jobs:
     JobName: # Name this key whatever you want your job to be called
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-python@v4
+        - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938  # v4.2.0
+        - uses: actions/setup-python@f677139bbe7f9c59b41e40162b753c062f5d49a3  # v5.2.0
           with:
             python-version: '3.9'
             cache: 'pip' # caching pip dependencies
